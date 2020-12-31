@@ -1,0 +1,12 @@
+{
+  "name": "AwesomeTodo",
+  "displayName": "AwesomeTodo",
+  "expo": {
+    "name": "AwesomeTodo",
+    "slug": "AwesomeTodo",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}

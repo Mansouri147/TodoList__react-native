@@ -1,8 +1,14 @@
 import React from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
+import { TodoListType } from "../App";
 
-const TodoItem = ({ item, pressHandler }) => {
+interface TodoItemProps {
+  item: TodoListType;
+  pressHandler: (key: string) => void
+}
+
+const TodoItem = ({ item, pressHandler }: TodoItemProps) => {
   return (
     <TouchableOpacity onPress={() => pressHandler(item.key)}>
       <View style={styles.item}>

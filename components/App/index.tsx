@@ -11,18 +11,23 @@ import Header from "../Header";
 import TodoItem from "../TodoItem";
 import AddTodo from "../AddTodo";
 
+export interface TodoListType {
+  text: string;
+  key: string
+}
+
 const App = () => {
-  const [todos, setTodos] = useState([
+  const [todos, setTodos] = useState<TodoListType[]>([
     { text: "buy coffee", key: "1" },
     { text: "create an app", key: "2" },
     { text: "play on the switch", key: "3" },
   ]);
 
-  const pressHandler = (key) => {
+  const pressHandler = (key: string) => {
     setTodos((prevTodos) => prevTodos.filter((todo) => todo.key != key));
   };
 
-  const submitHandler = (text) => {
+  const submitHandler = (text: string) => {
     if (text.length > 3) {
       setTodos((prevTodos) => [
         { text, key: Math.random().toString() },
@@ -38,7 +43,6 @@ const App = () => {
     <TouchableWithoutFeedback
       onPress={() => {
         Keyboard.dismiss();
-        console.log("dismissed keyboard");
       }}
     >
       <View style={styles.container}>

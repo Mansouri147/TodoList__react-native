@@ -1,11 +1,9 @@
 import React, { useState } from "react";
-import { StyleSheet, Text, View, TextInput, Button } from "react-native";
+import { StyleSheet, View, TextInput, Button } from "react-native";
+import { observer } from "mobx-react";
+import todoStore from "../context/todoStore";
 
-const AddTodo = ({
-  submitHandler,
-}: {
-  submitHandler: (text: string) => void;
-}) => {
+const AddTodo = observer(() => {
   const [text, setText] = useState("");
   const changeHandler = (val: string) => {
     setText(val);
@@ -18,13 +16,13 @@ const AddTodo = ({
         onChangeText={changeHandler}
       />
       <Button
-        onPress={() => submitHandler(text)}
+        onPress={() => todoStore.addTodoItem({ text })}
         title="add todo"
         color="coral"
       />
     </View>
   );
-};
+});
 
 export default AddTodo;
 

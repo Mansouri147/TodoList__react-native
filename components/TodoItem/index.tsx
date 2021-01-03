@@ -1,16 +1,16 @@
 import React from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
-import { TodoListType } from "../App";
+import todoStore, { TodoType } from "../context/todoStore";
+
 
 interface TodoItemProps {
-  item: TodoListType;
-  pressHandler: (key: string) => void
+  item: TodoType;
 }
 
-const TodoItem = ({ item, pressHandler }: TodoItemProps) => {
+const TodoItem = ({ item }: TodoItemProps) => {
   return (
-    <TouchableOpacity onPress={() => pressHandler(item.key)}>
+    <TouchableOpacity onPress={() => todoStore.deleteItem(item.key)}>
       <View style={styles.item}>
         <MaterialIcons name="delete" size={18} color="#333" />
         <Text style={styles.itemText}>{item.text}</Text>
